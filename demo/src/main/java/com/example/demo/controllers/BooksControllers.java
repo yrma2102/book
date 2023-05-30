@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.demo.models.Book;
 import com.example.demo.services.BookService;
@@ -83,7 +84,7 @@ public class BooksControllers {
 		
 	}
 	
-	@GetMapping("/books/delete/{bookId}")
+	@RequestMapping(value="/books/delete/{bookId}", method=RequestMethod.DELETE)
 	public String eliminarLibro(@PathVariable("bookId") Long bookId) {
 		bookService.deleteBook(bookId);
 		return "redirect:/books";
